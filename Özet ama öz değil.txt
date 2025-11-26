@@ -1,0 +1,1432 @@
+﻿
+💡 Arduino C++ 5-Step Course Documentation
+Step 1: Digital Output - The First Blink
+[GENERAL_CONCEPT_1: Basic Sketch Structure & Digital Output]
+The essential components of an Arduino sketch are the setup() and loop() functions. setup() runs once for initialization, and loop() runs continuously for the main logic. We use digital commands to control components like LEDs, which have two states: ON (HIGH) or OFF (LOW).
+Commands for Step 1: setup(), loop(), pinMode(), digitalWrite()
+
+⚙️ 1.1 setup()
+🇬🇧 English Reference (EN)
+Description:
+The setup() function is called when a sketch starts. Use it to initialize variables, pin modes, start using libraries, etc. The setup() function will only run once, after each powerup or reset of the Arduino board.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  // configuration code here
+}
+  
+Parameters:
+None.
+Returns: void (Nothing).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    // Initialize pin 13 as an output
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  // Main code
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+setup() fonksiyonu bir taslak (sketch) başladığında çağrılır. Değişkenleri başlatmak, pin modlarını ayarlamak ve kütüphaneleri kullanmaya başlamak için kullanılır. setup() fonksiyonu, Arduino kartına güç verildiğinde veya reset atıldığında sadece bir kez çalışır.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  // yapılandırma kodu buraya
+}
+  
+Parametreler:
+Yok.
+Dönüş Değeri: void (Yok).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    // 13. pini çıkış olarak başlat
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  // Ana kod
+}
+  
+
+⚙️ 1.2 loop()
+🇬🇧 English Reference (EN)
+Description:
+After creating a setup() function, which initializes and sets the initial values, the loop() function does precisely what its name suggests, and loops consecutively, allowing your program to change and respond. Use it to actively control the Arduino board.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  // main code here
+}
+  
+Parameters:
+None.
+Returns: void (Nothing).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT);
+}
+
+// Turn the LED on and off repeatedly
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+İlk değerleri başlatan setup() fonksiyonundan sonra, loop() fonksiyonu isminin tam karşılığı olan işi yapar ve ardışık olarak döngüye girer; programınızın değişmesini ve tepki vermesini sağlar. Arduino kartını aktif olarak kontrol etmek için bu fonksiyonu kullanın.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  // ana kod buraya
+}
+  
+Parametreler:
+Yok.
+Dönüş Değeri: void (Yok).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT);
+}
+
+// LED'i tekrar tekrar yakıp söndür
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+  
+
+⚙️ 1.3 pinMode()
+🇬🇧 English Reference (EN)
+Description:
+Configures the specified pin to behave either as an input or an output.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    pinMode(pin, mode);
+  
+Parameters:
+Parameter
+Type
+Description
+pin
+uint8_t
+The Arduino pin number to set the mode of.
+mode
+uint8_t
+INPUT, OUTPUT, or INPUT_PULLUP.
+Returns: void
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT); // Sets the digital pin 13 as output
+}
+void loop() {}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Belirtilen pini giriş veya çıkış olarak davranacak şekilde yapılandırır.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    pinMode(pin, mod);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+pin
+uint8_t
+Modu ayarlanacak Arduino pin numarası.
+mod
+uint8_t
+INPUT (Giriş), OUTPUT (Çıkış) veya INPUT_PULLUP.
+Dönüş Değeri: void
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT); // 13 numaralı dijital pini çıkış olarak ayarlar
+}
+void loop() {}
+  
+
+⚙️ 1.4 digitalWrite()
+🇬🇧 English Reference (EN)
+Description:
+Write a HIGH or a LOW value to a digital pin. If the pin has been configured as an OUTPUT with pinMode(), its voltage will be set to the corresponding value: 5V (or 3.3V on 3.3V boards) for HIGH, 0V (ground) for LOW.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    digitalWrite(pin, value);
+  
+Parameters:
+Parameter
+Type
+Description
+pin
+uint8_t
+The Arduino pin number.
+value
+uint8_t
+HIGH or LOW.
+Returns: void
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH); // Turn LED on
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Dijital bir pine HIGH (Yüksek) veya LOW (Düşük) değeri yazar. Eğer pin pinMode() ile OUTPUT olarak yapılandırıldıysa, voltaj değeri şuna ayarlanır: HIGH için 5V (veya 3.3V kartlarda 3.3V), LOW için 0V (toprak).
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    digitalWrite(pin, deger);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+pin
+uint8_t
+Arduino pin numarası.
+deger
+uint8_t
+HIGH veya LOW.
+Dönüş Değeri: void
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH); // LED'i yak
+}
+  
+
+Step 2: Reading Digital Inputs
+[GENERAL_CONCEPT_2: Inputs and Conditionals]
+Reading the state of a button or switch requires the use of digital input. We use conditional statements (if, else) to make decisions in the code based on the input state read by digitalRead().
+Commands for Step 2: digitalRead(), if / else
+
+⚙️ 2.1 digitalRead()
+🇬🇧 English Reference (EN)
+Description:
+Reads the value from a specified digital pin, either HIGH or LOW.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    int state = digitalRead(pin);
+  
+Parameters:
+Parameter
+Type
+Description
+pin
+uint8_t
+The Arduino pin number you want to read.
+Returns: int - HIGH or LOW.
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    int buttonPin = 2;
+void setup() {
+  pinMode(buttonPin, INPUT);
+}
+void loop() {
+  int val = digitalRead(buttonPin); // Read input
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Belirtilen dijital pindeki değeri okur; sonuç HIGH veya LOW olur.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    int durum = digitalRead(pin);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+pin
+uint8_t
+Okumak istediğiniz Arduino pin numarası.
+Dönüş Değeri: int - HIGH veya LOW.
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    int butonPini = 2;
+void setup() {
+  pinMode(butonPini, INPUT);
+}
+void loop() {
+  int deger = digitalRead(butonPini); // Girişi oku
+}
+  
+
+⚙️ 2.2 if / else
+🇬🇧 English Reference (EN)
+Description:
+The if statement checks for a condition and executes the following statement or set of statements if the condition is 'true'. The else statement lets you execute code if the condition is 'false'.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    if (condition) {
+  // Statement(s) to run if true
+} else {
+  // Statement(s) to run if false
+}
+  
+Parameters:
+Parameter
+Type
+Description
+condition
+boolean
+A boolean expression (e.g., x > 50 or x == HIGH).
+Returns: void (Control structure).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  if (digitalRead(2) == HIGH) {
+    digitalWrite(13, HIGH); // Turn LED on if button pressed
+  } else {
+    digitalWrite(13, LOW);  // Turn LED off otherwise
+  }
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+if ifadesi bir koşulu kontrol eder ve koşul 'doğru' (true) ise takip eden ifadeyi veya ifade bloğunu çalıştırır. else ifadesi, koşul 'yanlış' (false) ise farklı bir kod bloğunun çalıştırılmasını sağlar.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    if (kosul) {
+  // Doğru ise çalışacak ifadeler
+} else {
+  // Yanlış ise çalışacak ifadeler
+}
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+kosul
+boolean
+Mantıksal bir ifade (örn: x > 50 veya x == HIGH).
+Dönüş Değeri: void (Kontrol yapısı).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  if (digitalRead(2) == HIGH) {
+    digitalWrite(13, HIGH); // Butona basıldıysa LED'i yak
+  } else {
+    digitalWrite(13, LOW);  // Aksi halde LED'i söndür
+  }
+}
+  
+
+Step 3: Controlling Time and Non-Blocking Delays
+[GENERAL_CONCEPT_3: Time and Delays]
+The delay() function stops all program execution, which is often inefficient. For more complex projects, we use millis() to manage time without blocking the processor, enabling multiple tasks simultaneously (non-blocking code).
+Commands for Step 3: delay(), millis()
+
+⚙️ 3.1 delay()
+🇬🇧 English Reference (EN)
+Description:
+Pauses the program for the amount of time (in milliseconds) specified as parameter.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    delay(ms);
+  
+Parameters:
+Parameter
+Type
+Description
+ms
+unsigned long
+The number of milliseconds to pause (1000ms = 1s).
+Returns: void
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000); // Wait for 1 second
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Programı parametre olarak belirtilen süre (milisaniye cinsinden) kadar duraklatır.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    delay(ms);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+ms
+unsigned long
+Duraklatılacak milisaniye sayısı (1000ms = 1sn).
+Dönüş Değeri: void
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000); // 1 saniye bekle
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+  
+
+⚙️ 3.2 millis()
+🇬🇧 English Reference (EN)
+Description:
+Returns the number of milliseconds passed since the Arduino board began running the current program. This number will overflow (go back to zero), after approximately 50 days. It is essential for multitasking.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    unsigned long time = millis();
+  
+Parameters:
+None.
+Returns: unsigned long (Number of milliseconds since start).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    unsigned long previousMillis = 0;
+const long interval = 1000;
+
+void loop() {
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+    // Perform timed action here without blocking
+  }
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Arduino kartının mevcut programı çalıştırmaya başlamasından bu yana geçen milisaniye sayısını döndürür. Bu sayı yaklaşık 50 gün sonra taşar (sıfıra döner). Çoklu görev (multitasking) için gereklidir.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    unsigned long zaman = millis();
+  
+Parametreler:
+Yok.
+Dönüş Değeri: unsigned long (Başlangıçtan beri geçen milisaniye).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    unsigned long oncekiMillis = 0;
+const long aralik = 1000;
+
+void loop() {
+  unsigned long simdikiMillis = millis();
+  if (simdikiMillis - oncekiMillis >= aralik) {
+    oncekiMillis = simdikiMillis;
+    // Bloklama yapmadan zamanlı işlem yap
+  }
+}
+  
+
+Step 4: Analog Control (PWM and Reading Sensors)
+[GENERAL_CONCEPT_4: Analog I/O & Mapping]
+Analog I/O deals with continuous values, unlike digital I/O. analogRead converts sensor voltage (0-5V) to a number (0-1023). analogWrite uses Pulse Width Modulation (PWM) to simulate varying voltage levels (0-255).
+Commands for Step 4: analogRead(), analogWrite(), map()
+
+⚙️ 4.1 analogRead()
+🇬🇧 English Reference (EN)
+Description:
+Reads the value from the specified analog pin. The Arduino board contains a multichannel, 10-bit analog to digital converter. This means it will map input voltages between 0 and 5 volts into integer values between 0 and 1023.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    int value = analogRead(pin);
+  
+Parameters:
+Parameter
+Type
+Description
+pin
+int
+The analog pin to read from (A0 to A5 on most boards).
+Returns: int (0 to 1023).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int sensorValue = analogRead(A0); // Read potentiometer
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Belirtilen analog pinden değer okur. Arduino kartı çok kanallı, 10-bitlik bir analog-dijital dönüştürücü içerir. Bu, 0 ile 5 volt arasındaki giriş voltajlarını 0 ile 1023 arasındaki tamsayı değerlerine dönüştüreceği anlamına gelir.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    int deger = analogRead(pin);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+pin
+int
+Okunacak analog pin (Çoğu kartta A0 - A5).
+Dönüş Değeri: int (0 ile 1023 arası).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int sensorDegeri = analogRead(A0); // Potansiyometreyi oku
+}
+  
+
+⚙️ 4.2 analogWrite() (PWM)
+🇬🇧 English Reference (EN)
+Description:
+Writes an analog value (PWM wave) to a pin. Can be used to light a LED at varying brightnesses or drive a motor at various speeds.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    analogWrite(pin, value);
+  
+Parameters:
+Parameter
+Type
+Description
+pin
+int
+The pin to write to (must support PWM, usually marked with ~).
+value
+int
+The duty cycle: between 0 (always off) and 255 (always on).
+Returns: void
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  analogWrite(9, 127); // LED at ~50% brightness
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Bir pine analog değer (PWM dalgası) yazar. Bir LED'i farklı parlaklıklarda yakmak veya bir motoru farklı hızlarda sürmek için kullanılabilir.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    analogWrite(pin, deger);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+pin
+int
+Yazılacak pin (PWM desteklemelidir, genelde ~ ile işaretlidir).
+deger
+int
+Görev döngüsü: 0 (hep kapalı) ile 255 (hep açık) arası.
+Dönüş Değeri: void
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  analogWrite(9, 127); // LED yaklaşık %50 parlaklıkta
+}
+  
+
+⚙️ 4.3 map()
+🇬🇧 English Reference (EN)
+Description:
+Re-maps a number from one range to another. That is, a value of fromLow would get mapped to toLow, a value of fromHigh to toHigh, values in-between to values in-between, etc.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    map(value, fromLow, fromHigh, toLow, toHigh);
+  
+Parameters:
+Parameter
+Type
+Description
+value
+long
+The number to map.
+fromLow
+long
+The lower bound of the value's current range.
+fromHigh
+long
+The upper bound of the value's current range.
+toLow
+long
+The lower bound of the target range.
+toHigh
+long
+The upper bound of the target range.
+Returns: long (The mapped value).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int val = analogRead(A0); // 0-1023
+  val = map(val, 0, 1023, 0, 255); // Convert to 0-255 for PWM
+  analogWrite(9, val);
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Bir sayıyı bir aralıktan başka bir aralığa yeniden haritalar (ölçekler). Yani, fromLow değeri toLow değerine, fromHigh değeri toHigh değerine ve aradaki değerler de orantılı olarak dönüştürülür.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    map(deger, minGiris, maksGiris, minCikis, maksCikis);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+deger
+long
+Haritalanacak sayı.
+minGiris
+long
+Değerin mevcut aralığının alt sınırı.
+maksGiris
+long
+Değerin mevcut aralığının üst sınırı.
+minCikis
+long
+Hedef aralığın alt sınırı.
+maksCikis
+long
+Hedef aralığın üst sınırı.
+Dönüş Değeri: long (Haritalanmış değer).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int val = analogRead(A0); // 0-1023
+  val = map(val, 0, 1023, 0, 255); // PWM için 0-255'e dönüştür
+  analogWrite(9, val);
+}
+  
+
+Step 5: Serial Communication and Debugging
+[GENERAL_CONCEPT_5: Debugging and Serial Communication]
+Serial communication is essential for debugging, sending data from the Arduino to your computer's Serial Monitor. This allows you to check variable values and confirm program flow.
+Commands for Step 5: Serial.begin(), Serial.println(), Serial.available()
+
+⚙️ 5.1 Serial.begin()
+🇬🇧 English Reference (EN)
+Description:
+Sets the data rate in bits per second (baud) for serial data transmission. For communicating with the computer, use one of these rates: 300, 9600, 115200, etc. 9600 is the default standard.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    Serial.begin(speed);
+  
+Parameters:
+Parameter
+Type
+Description
+speed
+unsigned long
+Speed in bits per second (baud), typically 9600.
+Returns: void
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  Serial.begin(9600); // Start serial communication
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Seri veri iletimi için veri hızını (saniyedeki bit sayısı - baud) ayarlar. Bilgisayarla iletişim kurmak için şu hızlardan birini kullanın: 300, 9600, 115200, vb. 9600 varsayılan standarttır.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    Serial.begin(hiz);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+hiz
+unsigned long
+Saniyedeki bit hızı (baud), genellikle 9600.
+Dönüş Değeri: void
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void setup() {
+  Serial.begin(9600); // Seri haberleşmeyi başlat
+}
+  
+
+⚙️ 5.2 Serial.println()
+🇬🇧 English Reference (EN)
+Description:
+Prints data to the serial port as human-readable ASCII text followed by a carriage return character (ASCII 13, or '\r') and a newline character (ASCII 10, or '\n'). This moves the cursor to the next line in the Serial Monitor.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    Serial.println(val);
+  
+Parameters:
+Parameter
+Type
+Description
+val
+any
+The value to print (string, char, int, float, etc.).
+Returns: size_t (Bytes written).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int sensorValue = analogRead(A0);
+  Serial.println(sensorValue); // Prints value and goes to new line
+  delay(100);
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Veriyi seri porta insan tarafından okunabilir ASCII metni olarak yazdırır, ardından bir satır başı karakteri (ASCII 13 veya '\r') ve bir yeni satır karakteri (ASCII 10 veya '\n') ekler. Bu, Seri Monitörde imleci bir sonraki satıra taşır.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    Serial.println(deger);
+  
+Parametreler:
+Parametre
+Tipi
+Açıklama
+deger
+herhangi
+Yazdırılacak değer (metin, karakter, tamsayı, ondalık sayı vb.).
+Dönüş Değeri: size_t (Yazılan bayt sayısı).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int sensorDegeri = analogRead(A0);
+  Serial.println(sensorDegeri); // Değeri yazdır ve alt satıra geç
+  delay(100);
+}
+  
+
+⚙️ 5.3 Serial.available()
+🇬🇧 English Reference (EN)
+Description:
+Get the number of bytes (characters) available for reading from the serial port. This is data that's already arrived and stored in the serial receive buffer.
+Syntax:
+code C++
+downloadcontent_copy
+expand_less
+    int count = Serial.available();
+  
+Parameters:
+None.
+Returns: int (The number of bytes available to read).
+Example Usage:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  if (Serial.available() > 0) {
+    // There is incoming data to read
+    char c = Serial.read();
+  }
+}
+  
+🇹🇷 Türkçe Referans (TR)
+Açıklama:
+Seri porttan okunmaya hazır kaç bayt (karakter) olduğunu döndürür. Bu, halihazırda gelmiş ve seri alım tamponunda (buffer) depolanmış olan veridir.
+Sözdizimi:
+code C++
+downloadcontent_copy
+expand_less
+    int adet = Serial.available();
+  
+Parametreler:
+Yok.
+Dönüş Değeri: int (Okunabilir bayt sayısı).
+Kullanım Örneği:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  if (Serial.available() > 0) {
+    // Okunacak gelen veri var
+    char c = Serial.read();
+  }
+}
+  
+Here is the continuation of the documentation, expanding into Step 6: Essential Components and Sensors Library. This section covers 15 of the most common modules, including the ones you requested (LCD, DC Motor, Servo, Voice), maintaining the dual-language format.
+
+🔌 Step 6: Essential Components & Sensors Library
+[GENERAL_CONCEPT_6: Modular Electronics]
+Arduino becomes powerful when connected to external modules. Most sensors work by sending either Digital signals (HIGH/LOW) or Analog signals (0-1023) to the Arduino. Some complex modules (like LCDs or MPUs) use communication protocols like I2C or SPI.
+[GENEL KAVRAM 6: Modüler Elektronik]
+Arduino, harici modüllere bağlandığında güçlenir. Çoğu sensör, Arduino'ya Dijital sinyaller (YÜKSEK/DÜŞÜK) veya Analog sinyaller (0-1023) göndererek çalışır. LCD'ler veya MPU'lar gibi bazı karmaşık modüller, I2C veya SPI gibi iletişim protokollerini kullanır.
+
+⚙️ 6.1 Servo Motor (SG90)
+🇬🇧 English Reference (EN)
+Description: A motor that can rotate to a specific angle (usually 0° to 180°). Requires the <Servo.h> library.
+Key Command: myServo.write(angle);
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Belirli bir açıya (genellikle 0° ile 180° arası) dönebilen bir motordur. <Servo.h> kütüphanesini gerektirir.
+Temel Komut: myServo.write(aci);
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    #include <Servo.h>
+Servo myServo;
+
+void setup() {
+  myServo.attach(9); // Pin 9
+}
+
+void loop() {
+  myServo.write(0);   // 0 degrees / derece
+  delay(1000);
+  myServo.write(90);  // 90 degrees / derece
+  delay(1000);
+  myServo.write(180); // 180 degrees / derece
+  delay(1000);
+}
+  
+
+⚙️ 6.2 Ultrasonic Sensor (HC-SR04)
+🇬🇧 English Reference (EN)
+Description: Measures distance by sending sound waves. It requires a Trig pin (output) to send sound and an Echo pin (input) to receive it.
+Key Logic: Distance = (Time x Speed of Sound) / 2.
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Ses dalgaları göndererek mesafeyi ölçer. Ses göndermek için Trig pini (çıkış) ve almak için Echo pini (giriş) gerektirir.
+Temel Mantık: Mesafe = (Süre x Ses Hızı) / 2.
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    const int trigPin = 9;
+const int echoPin = 10;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long duration = pulseIn(echoPin, HIGH);
+  int distance = duration * 0.034 / 2; // cm
+
+  Serial.print("Dist: ");
+  Serial.println(distance);
+  delay(500);
+}
+  
+
+⚙️ 6.3 I2C LCD Display (16x2)
+🇬🇧 English Reference (EN)
+Description: A screen to display text. Using the I2C module (4 pins: VCC, GND, SDA, SCL) saves pins. Requires <LiquidCrystal_I2C.h>.
+Key Command: lcd.print("Text");
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Metin görüntülemek için kullanılan bir ekran. I2C modülü (4 pin: VCC, GND, SDA, SCL) kullanmak pin tasarrufu sağlar. <LiquidCrystal_I2C.h> gerektirir.
+Temel Komut: lcd.print("Metin");
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    #include <LiquidCrystal_I2C.h>
+// Address usually 0x27 or 0x3F / Adres genelde 0x27 veya 0x3F
+LiquidCrystal_I2C lcd(0x27, 16, 2); 
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0); // Column 0, Row 0
+  lcd.print("Hello World");
+}
+
+void loop() {}
+  
+
+⚙️ 6.4 DC Motor (with L298N Driver)
+🇬🇧 English Reference (EN)
+Description: Standard motors just spin. To control direction and speed, we use a driver like L298N.
+Logic: IN1 HIGH + IN2 LOW = Forward. IN1 LOW + IN2 HIGH = Backward.
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Standart motorlar sadece döner. Yönü ve hızı kontrol etmek için L298N gibi bir sürücü kullanırız.
+Mantık: IN1 YÜKSEK + IN2 DÜŞÜK = İleri. IN1 DÜŞÜK + IN2 YÜKSEK = Geri.
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    int in1 = 8;
+int in2 = 9;
+int enA = 10; // PWM pin for speed / Hız için PWM pini
+
+void setup() {
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(enA, OUTPUT);
+}
+
+void loop() {
+  // Forward / İleri
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  analogWrite(enA, 200); // Speed 0-255
+  delay(2000);
+  
+  // Stop / Dur
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  delay(1000);
+}
+  
+
+⚙️ 6.5 Sound/Voice Sensor (KY-037)
+🇬🇧 English Reference (EN)
+Description: Detects sound levels. It has a digital output (sound detected: yes/no) and an analog output (loudness).
+Key Command: digitalRead() or analogRead().
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Ses seviyelerini algılar. Dijital çıkışı (ses algılandı: evet/hayır) ve analog çıkışı (ses şiddeti) vardır.
+Temel Komut: digitalRead() veya analogRead().
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    int soundPin = A0;
+
+void loop() {
+  int val = analogRead(soundPin);
+  if (val > 500) { // Threshold / Eşik değeri
+    Serial.println("Loud Noise! / Yüksek Ses!");
+  }
+}
+  
+
+⚙️ 6.6 Temperature & Humidity (DHT11)
+🇬🇧 English Reference (EN)
+Description: A digital sensor for measuring ambient temperature and humidity. Requires <DHT.h> library.
+Key Command: dht.readTemperature();
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Ortam sıcaklığını ve nemini ölçmek için kullanılan dijital sensör. <DHT.h> kütüphanesini gerektirir.
+Temel Komut: dht.readTemperature();
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    #include <DHT.h>
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+}
+
+void loop() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  Serial.print("Temp: "); Serial.println(t);
+  delay(2000);
+}
+  
+
+⚙️ 6.7 PIR Motion Sensor (HC-SR501)
+🇬🇧 English Reference (EN)
+Description: Detects movement using infrared heat signatures. Returns HIGH when motion is detected.
+Key Command: digitalRead(pin).
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Kızılötesi ısı imzalarını kullanarak hareketi algılar. Hareket algılandığında HIGH (Yüksek) değer döndürür.
+Temel Komut: digitalRead(pin).
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    int pirPin = 7;
+void loop() {
+  if (digitalRead(pirPin) == HIGH) {
+    Serial.println("Motion Detected! / Hareket Algılandı!");
+  }
+}
+  
+
+⚙️ 6.8 Light Sensor (LDR)
+🇬🇧 English Reference (EN)
+Description: Light Dependent Resistor. Resistance changes with light intensity. Used with a voltage divider circuit.
+Key Command: analogRead(pin).
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Işığa Bağımlı Direnç. Işık şiddetiyle direnci değişir. Voltaj bölücü devre ile kullanılır.
+Temel Komut: analogRead(pin).
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int lightLevel = analogRead(A0);
+  if (lightLevel < 300) {
+    Serial.println("Dark / Karanlık");
+  }
+}
+  
+
+⚙️ 6.9 Active Buzzer
+🇬🇧 English Reference (EN)
+Description: Produces a beep sound when powered. Use tone() for specific frequencies or just digitalWrite() for active buzzers.
+Key Command: tone(pin, frequency);
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Güç verildiğinde bip sesi üretir. Belirli frekanslar için tone() veya aktif buzzerlar için sadece digitalWrite() kullanın.
+Temel Komut: tone(pin, frekans);
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  tone(8, 1000); // 1000Hz sound / ses
+  delay(500);
+  noTone(8);     // Stop sound / sesi durdur
+  delay(500);
+}
+  
+
+⚙️ 6.10 Soil Moisture Sensor
+🇬🇧 English Reference (EN)
+Description: Measures the conductivity of the soil to determine moisture. Dry soil = High Resistance.
+Key Command: analogRead().
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Nemi belirlemek için toprağın iletkenliğini ölçer. Kuru toprak = Yüksek Direnç.
+Temel Komut: analogRead().
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int moisture = analogRead(A0);
+  // Usually: 0 (Wet) - 1023 (Dry) 
+  // Genelde: 0 (Islak) - 1023 (Kuru)
+  Serial.println(moisture); 
+}
+  
+
+⚙️ 6.11 Relay Module
+🇬🇧 English Reference (EN)
+Description: An electromagnetic switch controlled by the Arduino to turn high-voltage devices (like a lamp) on/off.
+Note: Many relay modules are "Active LOW" (LOW turns them ON).
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Yüksek voltajlı cihazları (lamba gibi) açıp kapatmak için Arduino tarafından kontrol edilen elektromanyetik bir anahtar.
+Not: Çoğu röle modülü "Aktif DÜŞÜK"tür (LOW sinyali onları AÇAR).
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  digitalWrite(7, LOW); // Relay ON / Röle AÇIK
+  delay(1000);
+  digitalWrite(7, HIGH); // Relay OFF / Röle KAPALI
+  delay(1000);
+}
+  
+
+⚙️ 6.12 Joystick Module
+🇬🇧 English Reference (EN)
+Description: Two potentiometers (X and Y axis) and one button.
+Wiring: VRx -> A0, VRy -> A1, SW -> Digital Pin.
+🇹🇷 Türkçe Referans (TR)
+Açıklama: İki potansiyometre (X ve Y ekseni) ve bir butondan oluşur.
+Bağlantı: VRx -> A0, VRy -> A1, SW -> Dijital Pin.
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int x = analogRead(A0);
+  int y = analogRead(A1);
+  int sw = digitalRead(2);
+  Serial.print("X:"); Serial.print(x);
+  Serial.print(" Y:"); Serial.println(y);
+}
+  
+
+⚙️ 6.13 Gas Sensor (MQ-2)
+🇬🇧 English Reference (EN)
+Description: Detects smoke, LPG, butane, and alcohol. Requires heating up (warm-up time).
+Key Command: analogRead(pin).
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Duman, LPG, bütan ve alkolü algılar. Isınma süresi gerektirir.
+Temel Komut: analogRead(pin).
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    void loop() {
+  int gasLevel = analogRead(A0);
+  if (gasLevel > 400) {
+    Serial.println("Gas/Smoke Detected! / Gaz/Duman Algılandı!");
+  }
+}
+  
+
+⚙️ 6.14 IR Receiver (Remote Control)
+🇬🇧 English Reference (EN)
+Description: Receives signals from an infrared remote controller. Requires <IRremote.h>.
+Key Logic: Checks for decoded hex codes.
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Kızılötesi uzaktan kumandadan sinyalleri alır. <IRremote.h> gerektirir.
+Temel Mantık: Çözümlenmiş hex kodlarını kontrol eder.
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    #include <IRremote.h>
+int RECV_PIN = 11;
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+
+void setup() {
+  irrecv.enableIRIn(); // Start receiver / Alıcıyı başlat
+}
+
+void loop() {
+  if (irrecv.decode(&results)) {
+    Serial.println(results.value, HEX);
+    irrecv.resume(); // Receive next value / Sonraki değeri al
+  }
+}
+  
+
+⚙️ 6.15 Membrane Keypad (4x4)
+🇬🇧 English Reference (EN)
+Description: A matrix of buttons to input numbers/characters. Requires <Keypad.h> library.
+Key Command: keypad.getKey().
+🇹🇷 Türkçe Referans (TR)
+Açıklama: Sayı/karakter girmek için kullanılan buton matrisi. <Keypad.h> kütüphanesini gerektirir.
+Temel Komut: keypad.getKey().
+Code / Kod:
+code C++
+downloadcontent_copy
+expand_less
+    #include <Keypad.h>
+
+const byte ROWS = 4; 
+const byte COLS = 4; 
+char keys[ROWS][COLS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+// Define pins for rows/cols here...
+// Satır/sütun pinlerini burada tanımlayın...
+  
+Here is Step 7, which focuses on Mini-Projects. These examples combine the components from the previous steps to build functional systems. This is where the logic of programming (combining inputs and outputs) truly shines.
+
+🛠️ Step 7: Combined Mini-Projects (Integration)
+[GENERAL_CONCEPT_7: System Integration]
+Now that we know how individual sensors work, we will combine them. The logic usually follows this pattern: Input (Sensors) → Processing (Arduino Logic/Conditions) → Output (Actuators/Displays).
+[GENEL KAVRAM 7: Sistem Entegrasyonu]
+Artık bireysel sensörlerin nasıl çalıştığını bildiğimize göre, onları birleştireceğiz. Mantık genellikle şu düzeni izler: Giriş (Sensörler) → İşleme (Arduino Mantığı/Koşullar) → Çıkış (Eyleyiciler/Ekranlar).
+
+🚀 Project 7.1: Reverse Parking Sensor (Geri Park Sensörü)
+Components / Bileşenler:
+1. HC-SR04 Ultrasonic Sensor
+2. Buzzer
+3. LED (Red / Kırmızı)
+4. LED (Green / Yeşil)
+🇬🇧 English Explanation
+Logic: The system measures distance.
+* If the distance is safe (> 20cm): The Green LED is ON, Buzzer is OFF.
+* If the distance is danger (< 20cm): The Red LED turns ON, Green turns OFF, and the Buzzer beeps. The closer the object, the faster the beeping (optional logic).
+🇹🇷 Türkçe Açıklama
+Mantık: Sistem mesafeyi ölçer.
+* Mesafe güvenli (> 20cm) ise: Yeşil LED AÇIK, Buzzer KAPALI.
+* Mesafe tehlikeli (< 20cm) ise: Kırmızı LED AÇIK, Yeşil KAPALI ve Buzzer öter. Cisim ne kadar yakınsa, ötme o kadar hızlanır (opsiyonel mantık).
+Code / Kod:
+code C++
+    const int trigPin = 9;
+const int echoPin = 10;
+const int buzzer = 11;
+const int ledRed = 12;
+const int ledGreen = 13;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(ledRed, OUTPUT);
+  pinMode(ledGreen, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // 1. Measure Distance / Mesafeyi Ölç
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH);
+  int distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  // 2. Decision Logic / Karar Mantığı
+  if (distance < 20) {
+    // Danger Zone / Tehlike Bölgesi
+    digitalWrite(ledGreen, LOW);
+    digitalWrite(ledRed, HIGH);
+    
+    // Beep sound / Bip sesi
+    tone(buzzer, 1000); 
+    delay(distance * 10); // Beep faster as you get closer / Yaklaştıkça hızlan
+    noTone(buzzer);
+    delay(distance * 10);
+    
+  } else {
+    // Safe Zone / Güvenli Bölge
+    digitalWrite(ledRed, LOW);
+    digitalWrite(ledGreen, HIGH);
+    noTone(buzzer);
+    delay(100);
+  }
+}
+  
+
+🌡️ Project 7.2: Automatic Climate Control (Otomatik İklim Kontrolü)
+Components / Bileşenler:
+1. DHT11 Temperature Sensor
+2. I2C LCD Display (16x2)
+3. DC Motor (Fan) + L298N Driver
+🇬🇧 English Explanation
+Logic: A thermostat system.
+* The Arduino reads the temperature.
+* It displays the current temperature on the LCD screen.
+* Condition: If the temperature exceeds 28°C, the Fan (DC Motor) turns ON automatically to cool down. If it drops below 28°C, the fan turns OFF.
+🇹🇷 Türkçe Açıklama
+Mantık: Bir termostat sistemi.
+* Arduino sıcaklığı okur.
+* Mevcut sıcaklığı LCD ekranda gösterir.
+* Koşul: Eğer sıcaklık 28°C'yi geçerse, Fan (DC Motor) soğutmak için otomatik olarak AÇILIR. 28°C'nin altına düşerse fan KAPANIR.
+Code / Kod:
+code C++
+    #include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+
+// Pins
+#define DHTPIN 2
+#define DHTTYPE DHT11
+int motorPin = 9; // L298N IN1 or Transistor Base
+
+DHT dht(DHTPIN, DHTTYPE);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  dht.begin();
+  lcd.init();
+  lcd.backlight();
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop() {
+  // 1. Read Data / Veriyi Oku
+  float t = dht.readTemperature();
+  
+  // 2. Display / Görüntüle
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(t);
+  lcd.print(" C");
+
+  // 3. Logic / Mantık
+  lcd.setCursor(0, 1);
+  if (t > 28.0) {
+    digitalWrite(motorPin, HIGH); // Fan ON / Fan Açık
+    lcd.print("Fan: ON ");
+  } else {
+    digitalWrite(motorPin, LOW);  // Fan OFF / Fan Kapalı
+    lcd.print("Fan: OFF");
+  }
+  
+  delay(2000); // Wait 2 seconds / 2 saniye bekle
+}
+  
+
+🔐 Project 7.3: Smart Door Lock (Akıllı Kapı Kilidi)
+Components / Bileşenler:
+1. Servo Motor (The Lock)
+2. Button (or Membrane Keypad)
+3. Buzzer
+4. Red & Green LEDs
+🇬🇧 English Explanation
+Logic: Simulates a secure door.
+* The door is initially LOCKED (Servo at 0°, Red LED ON).
+* When the button is pressed (simulating a correct password or fingerprint):
+1. Servo moves to 90° (Unlock).
+2. Green LED turns ON, Red OFF.
+3. Buzzer plays a "Success" melody.
+4. Wait 5 seconds, then auto-lock again.
+🇹🇷 Türkçe Açıklama
+Mantık: Güvenli bir kapıyı simüle eder.
+* Kapı başlangıçta KİLİTLİDİR (Servo 0°'de, Kırmızı LED AÇIK).
+* Butona basıldığında (doğru şifre veya parmak izi simülasyonu):
+1. Servo 90°'ye hareket eder (Kilit Aç).
+2. Yeşil LED AÇIK, Kırmızı KAPALI.
+3. Buzzer "Başarılı" melodisi çalar.
+4. 5 saniye bekle, sonra tekrar otomatik kilitle.
+Code / Kod:
+code C++
+    #include <Servo.h>
+
+Servo myLock;
+const int buttonPin = 2;
+const int buzzer = 8;
+const int redLED = 12;
+const int greenLED = 13;
+
+void setup() {
+  myLock.attach(9);
+  pinMode(buttonPin, INPUT_PULLUP); // Button to GND / Buton Toprağa bağlı
+  pinMode(buzzer, OUTPUT);
+  pinMode(redLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+  
+  // Initial State: Locked / Başlangıç Durumu: Kilitli
+  myLock.write(0);
+  digitalWrite(redLED, HIGH);
+  digitalWrite(greenLED, LOW);
+}
+
+void loop() {
+  // If button pressed (Active LOW) / Butona basılırsa (Aktif DÜŞÜK)
+  if (digitalRead(buttonPin) == LOW) {
+    unlockDoor();
+  }
+}
+
+void unlockDoor() {
+  // 1. Visual & Audio / Görsel & İşitsel
+  digitalWrite(redLED, LOW);
+  digitalWrite(greenLED, HIGH);
+  tone(buzzer, 1500, 200); // Beep
+  
+  // 2. Open Lock / Kilidi Aç
+  myLock.write(90);
+  
+  // 3. Wait / Bekle
+  delay(5000); // Keep open for 5 seconds / 5 saniye açık tut
+  
+  // 4. Lock Again / Tekrar Kilitle
+  myLock.write(0);
+  digitalWrite(greenLED, LOW);
+  digitalWrite(redLED, HIGH);
+  tone(buzzer, 500, 500); // Lock sound / Kilitlenme sesi
+}
+  
+
